@@ -1,0 +1,15 @@
+<resources>
+
+    <string name="remove_completed_tasks">Remove Completed Tasks</string>
+    <string name="no_tasks">No tasks.</string>
+    <string name="app_name">Food Trucks</string>
+    <string name="unsaved_changes_title">Unsaved Changes</string>
+    <string name="unsaved_changes_message">Would you like to add this task?</string>
+    <string name="discard">Discard</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_add_location_to_task">Add Location To Task</string>
+    <string name="foodtrucks">Food Trucks View</string>
+    <string name="foodtruckpic">Picture of a Food Truck</string>
+
+</resources>

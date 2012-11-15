@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+	<TextView 
+		android:id="@+id/foodtruck_title"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:text="@string/foodtrucks"
+	    />
+    <com.google.android.maps.MapView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/mapview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:apiKey="0x9_QvamSEikLk7xHrX-4y38fnbLUiB31WREtnA" 
+        android:clickable="true"/>
+    
+    <!-- android:apiKey="01-FrngT-QoHU2I3-DvU9ui4XsQTw0kO7S9A2xg" -->
+    
+</RelativeLayout>
