@@ -60,26 +60,6 @@ public class LocationOverlay extends ItemizedOverlay{
 		return mOverlays.get(i);
 	}
 
-/*	@Override
-	public boolean onTap(GeoPoint point, com.google.android.maps.MapView view) {
-	
-		boolean tapped = super.onTap(point, view);
-		if(tapped)
-		{
-			Log.w("DEBUG", "Overlay Tapped");
-			Intent intent = new Intent(android.content.Intent.ACTION_VIEW, 
-			//Uri.parse("http://maps.google.com/maps?saddr=20.344,34.34&daddr=20.5666,45.345"));
-			Uri.parse("http://maps.google.com/maps?saddr="+point.getLatitudeE6()+","+point.getLongitudeE6()+"&daddr=20.5666,45.345"));
-			intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
-			
-			view.getContext().startActivity(intent);
-		}else{
-			Log.w("DEBUG", "Overlay Not Tapped");
-		}
-		
-		return true;
-	};
-	*/
 	
 	@Override
 	protected boolean onTap(int index) 

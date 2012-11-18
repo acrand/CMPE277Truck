@@ -13,9 +13,9 @@ import com.oreilly.android.foodtruckmanager.service.RESTService;
 public class FoodTruckApplication extends Application implements RESTResultReceiver.Receiver
 {    
     private RESTResultReceiver receiver;
-    private String restQuery = "http://search.twitter.com/search.json?q=%23android&rpp=5&include_entities=true&result_type=mixed";
-    
-    public static final String COMMAND_STR_QUERY = "query";
+//    private String restQuery = "http://search.twitter.com/search.json?q=%23android&rpp=5&include_entities=true&result_type=mixed";
+//    
+//    public static final String COMMAND_STR_QUERY = "query";
     
     @Override
     public void onCreate() {
@@ -29,18 +29,9 @@ public class FoodTruckApplication extends Application implements RESTResultRecei
     
     public void createService()
     {
+        /*Start Rest service intent*/
+        startService(new Intent(this, RESTService.class));
         
-        Intent intent = new Intent(this, RESTService.class);
-        startService(intent);
-        
-        
-//        receiver = new RESTResultReceiver(new Handler());
-//        receiver.setReceiver(this);
-//
-//        final Intent intent = new Intent(Intent.ACTION_SYNC, null, this, RESTService.class);
-//        intent.putExtra("receiver", receiver);
-//        intent.putExtra("command", COMMAND_STR_QUERY);
-//        startService(intent);
     }
 
     public void onPause() {

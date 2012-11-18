@@ -33,13 +33,9 @@ public class RESTService extends Service {
 
 	private Looper serviceLooper;
 
-	  
-    /**
-     * Target we publish for clients to send messages to IncomingHandler.
-     */
-    private Messenger mMessenger ;
+	private Messenger mMessenger ;
     
-	private ServiceHandler serviceHandler;
+	private static ServiceHandler serviceHandler;
 
 	private static boolean stopThreadID = false;
 	private int counter = 0;
@@ -60,15 +56,14 @@ public class RESTService extends Service {
 
 		@Override
 		public void handleMessage(Message msg) {
-			// Normally we would do some work here, like download a file.
-			// For our sample, we just sleep for 5 seconds.
-			long endTime = System.currentTimeMillis() + 5 * 1000;
+			
 			while (!stopRequested()) {
 				counter++;
 				synchronized (this) {
 					try {
 						callTwitterAPI();
 						System.out.println("waiting: "+counter);
+						// sleep for 5 seconds.
 						wait(5000);
 					} catch (Exception e) {
 						throw new RuntimeException(
@@ -76,8 +71,6 @@ public class RESTService extends Service {
 					}
 				}
 			}
-			// Stop the service using the startId, so that we don't stop
-			// the service in the middle of handling another job
 			stopSelf(msg.arg1);
 		}
 
@@ -136,17 +129,16 @@ public class RESTService extends Service {
 
 	@Override
 	public void onCreate() {
-		// Start up the thread running the service. Note that we create a
-		// separate thread because the service normally runs in the process's
-		// main thread, which we don't want to block. We also make it
-		// background priority so CPU-intensive work will not disrupt our UI.
+        //Create new thread to run in background not main UI thread
 		HandlerThread thread = new HandlerThread("ServiceStartArguments",
 				android.os.Process.THREAD_PRIORITY_BACKGROUND);
 		thread.start();
 
 		// Get the HandlerThread's Looper and use it for our Handler
 		serviceLooper = thread.getLooper();
+		
 		serviceHandler = new ServiceHandler(serviceLooper);
+		
 		mMessenger = new Messenger(serviceHandler);
 	}
 
@@ -173,11 +165,6 @@ public class RESTService extends Service {
 		return START_STICKY;
 	}
 
-//	@Override
-//	public IBinder onBind(Intent intent) {
-//		// We don't provide binding, so return null
-//		return null;
-//	}
 
 	@Override
 	public void onDestroy() {
@@ -187,13 +174,10 @@ public class RESTService extends Service {
 	}
 	
 
-    /**
-     * When binding to the service, we return an interface to our messenger
-     * for sending messages to the service.
-     */
     @Override
     public IBinder onBind(Intent intent) {
-        Toast.makeText(getApplicationContext(), "binding", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "binding app", Toast.LENGTH_SHORT).show();
+        
         return mMessenger.getBinder();
     }    
 

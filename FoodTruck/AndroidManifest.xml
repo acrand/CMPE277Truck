@@ -3,7 +3,14 @@
     package="com.oreilly.android.taskmanager"
     android:versionCode="1"
     android:versionName="1.0" >
-
+    <uses-sdk android:minSdkVersion="16"/>
+    
+    <uses-permission android:name="android.permission.INTERNET"/>        
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
     <application
         android:name="com.oreilly.android.foodtruckmanager.FoodTruckApplication"
         android:icon="@drawable/foodtruck"
@@ -20,16 +27,14 @@
             </intent-filter>
          </activity>        
         <service android:name="com.oreilly.android.foodtruckmanager.service.RESTService" />
-        <receiver android:name="com.oreilly.android.foodtruckmanager.receiver.FoodTruckReceiver">
+        <receiver android:name="com.oreilly.android.foodtruckmanager.receiver.FoodTruckReceiver"
+            android:exported = "false">
             <intent-filter >
                 <action android:name="com.oreilly.android.foodtruckmanager.broadcast"/>
             </intent-filter>
         </receiver>
         
     </application>
-    <uses-sdk android:minSdkVersion="16"/>
-    <uses-permission android:name="android.permission.INTERNET"/>        
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    
+    
 </manifest>

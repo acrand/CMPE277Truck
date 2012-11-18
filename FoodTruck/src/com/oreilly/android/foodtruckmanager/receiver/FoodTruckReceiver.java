@@ -38,6 +38,7 @@ public class FoodTruckReceiver extends BroadcastReceiver {
 
 			int foodTruckID = context.getResources().getIdentifier("foodtruck", "drawable",context.getPackageName());
 			
+			
 			int callID = context.getResources().getIdentifier("call", "drawable",context.getPackageName());
 			int mapID = context.getResources().getIdentifier("googlemapsicon", "drawable",context.getPackageName());
 			int directionID = context.getResources().getIdentifier("starthere", "drawable",context.getPackageName());
@@ -52,13 +53,13 @@ public class FoodTruckReceiver extends BroadcastReceiver {
 					.addAction(directionID, FOODTRUCK_GETDIRECTIONS, PendingIntent.getActivity(context, FoodTruckReceiver.FOODTRUCK_NEWLOCATION, 
 							 new Intent(context, GmapsViewActivity.class)
 			          .putExtra("FoodTruck", ft)
-			          .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+			          .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 			          .setAction(FOODTRUCK_GETDIRECTIONS)
 			          ,PendingIntent.FLAG_ONE_SHOT))
 					.addAction(callID, FOODTRUCK_CALLIT, PendingIntent.getActivity(context, FoodTruckReceiver.FOODTRUCK_NEWLOCATION, 
 							 new Intent(context, GmapsViewActivity.class)
 			          .putExtra("FoodTruck", ft)
-			          .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+			          .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 			          .setAction(FOODTRUCK_CALLIT)
 			          ,PendingIntent.FLAG_ONE_SHOT))
 					.build();

@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class FoodTruck implements Serializable  
 {
+	
 
 	public String getName() {
 		return name;

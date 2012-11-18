@@ -23,7 +23,7 @@ public class RESTResultReceiver extends ResultReceiver
     {
         public void onReceiveResult(int resultCode, Bundle resultData);
     }
-
+    
     @Override
     protected void onReceiveResult(int resultCode, Bundle resultData) 
     {
